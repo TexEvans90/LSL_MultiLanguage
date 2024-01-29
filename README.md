@@ -90,13 +90,13 @@ Emotes have the following format:
 Emotes have the following format:
 \<Request ID\>|\<3\>|\<Link Message Number Returned\>|\<Menu Text\>
 
-10010|3|10301|Example of a name picker menu
+10004|3|10401|Example of a name picker menu
 
 ## Type 4: Dialog Menu for Name Selection
 Emotes have the following format:
 \<Request ID\>|\<4\>|\<Link Message Number Returned\>|\<Menu Text\>
 
-10011|4|10401|Example of a Name Selection Dialog Menu
+10005|4|10501|Example of a Name Selection Dialog Menu
 
 ## Type 5: Website Dialog Box
 Emotes have the following format:
