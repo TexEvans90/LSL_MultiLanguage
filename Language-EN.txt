@@ -1,0 +1,15 @@
+10001|0|1|Example of an emote
+10002|0|1|Example of an emote with %on% (owner name) included
+10003|0|1|Example of an emote with %n1% (third party name) included
+10004|0|1|Example of an emote with %p1% (custom parameter) included
+10005|0|1|Example of an emote with %on% (owner name), %n1% (third party name) and %p2% (custom parameter) included
+10006|0|1|Example of an emote with one item
+10007|0|1|Example of an emote with %p1% items
+10008|1|10101|Example of a menu that returns a single link message number, but with parameters based on button pressed. Value returned in sParam |1|Yes|0|No|-1|Maybe
+10009|2|0|Example of a menu that returns a different link message number for each button:|10201|Button One|10202|Button Two
+10010|3|10301|Example of a name picker menu
+10011|4|10401|Example of a texbox menu that also includes a parameter.  You can add parameters to all of your menus, like %on%.
+10012|5|0|Example of a website dialog box|https://github.com/TexEvans90/LSL_MultiLanguage
+90001|0|11|*** Too many dialog menus open. Try again later.
+90002|0|11|*** Previous name type menu still active, please wait and try again later.
+90003|0|11|*** Wasn't able to get button names from SL.  Try again later.
