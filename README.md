@@ -30,3 +30,21 @@ The Emote/Menu Parameter definitition changes depending upon the type.  This wil
 ### Emote/Menu Text and Additional Parameters
 The Emote/Menu Text and Additional Parameters varys depending upon the type, however the first part of this section is the text for the emote or menu text.  The additional parameters will be discussed in each Emote/Menu Type's section.
 
+## Type 1: Emotes
+Emotes have the following format:
+\<Request ID\>|\<0\>|\<Emote Volume\>|\<Emote Text\>
+
+### Emote Volume
+The Emote Volume parameter controls which LSL function is used for the emote, adjusted by the user's privacy setting.  The privacy setting is an optional feature you can offer that allows the user to select if emotes are public, private only to them, or muted completely. Details are discussed in the Privacy Setting section later.
+
+The volumes are listed below:
+
+| Volume  | Description                                                                     |
+| ------: | ------------------------------------------------------------------------------- |
+|       0 | Muted (Only used internally by the script)                                      |
+|       1 | Owner Say                                                                       |
+|       2 | Whisper                                                                         |
+|       3 | Say                                                                             |
+|       4 | Shout                                                                           |
+|       5 | Instant Message                                                                 |
+
