@@ -35,6 +35,7 @@ The Emote/Menu Text and Additional Parameters varys depending upon the type, how
 ## Type 0: Emotes
 Emotes have the following format:
 \<Request ID\>|\<0\>|\<Emote Volume\>|\<Emote Text\>
+
 10001|0|3|This is an example of an emote
 
 ### Emote Volume
@@ -76,26 +77,31 @@ The string substitution parameters can also be used in all of the menu types as 
 ## Type 1: Dialog Menu with a Single Linked Message Call
 Emotes have the following format:
 \<Request ID\>|\<1\>|\<Link Message Number Returned\>|\<Menu Text\>|<\Button 1 Value\>|<\Button 1 Text\>|... (additional buttons)
+
 10002|1|10202|Single Link Message Dialog Menu|1|Yes|0|No
 
 ## Type 2: Dialog Menu with Multiple Linked Message Calls
 Emotes have the following format:
 \<Request ID\>|\<2\>|\<Link Message Number Returned\>|\<Menu Text\>|<Button 1 Link Msg\>|\<Button 1 Text\>|... (additional buttons)
+
 10003|2|0|Example of a menu that returns a different link message number for each button:|10201|Button One|10202|Button Two
 
 ## Type 3: Dialog Menu for Name Selection
 Emotes have the following format:
 \<Request ID\>|\<3\>|\<Link Message Number Returned\>|\<Menu Text\>
+
 10010|3|10301|Example of a name picker menu
 
 ## Type 4: Dialog Menu for Name Selection
 Emotes have the following format:
 \<Request ID\>|\<4\>|\<Link Message Number Returned\>|\<Menu Text\>
+
 10011|4|10401|Example of a Name Selection Dialog Menu
 
 ## Type 5: Website Dialog Box
 Emotes have the following format:
 \<Request ID\>|\<5\>|\<Link Message Number Returned\>|\<Menu Text\>|\<URL\>
+
 10012|5|0|Example of a website dialog box|https://github.com/TexEvans90/LSL_MultiLanguage
 
 
