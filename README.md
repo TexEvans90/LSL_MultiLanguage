@@ -33,7 +33,6 @@ The Emote/Menu Parameter definitition changes depending upon the type.  This wil
 The Emote/Menu Text and Additional Parameters varys depending upon the type, however the first part of this section is the text for the emote or menu text.  The additional parameters will be discussed in each Emote/Menu Type's section.
 
 ## Type 0: Emotes
-Emotes have the following format:
 \<Request ID\>|\<0\>|\<Emote Volume\>|\<Emote Text\>
 
 10001|0|3|This is an example of an emote
@@ -75,34 +74,58 @@ The parameter string substituion is a direct replacement with data that you prov
 The string substitution parameters can also be used in all of the menu types as well.
 
 ## Type 1: Dialog Menu with a Single Linked Message Call
-Emotes have the following format:
-\<Request ID\>|\<1\>|\<Link Message Number Returned\>|\<Menu Text\>|<\Button 1 Value\>|<\Button 1 Text\>|... (additional buttons)
+\<Request ID\>|\<1\>|\<Linked Message Number Returned\>|\<Menu Text\>|<\Button 1 Value\>|<\Button 1 Text\>|... (additional buttons)
 
-10002|1|10202|Single Link Message Dialog Menu|1|Yes|0|No
+10002|1|10202|Single Linked Message Dialog Menu|1|Yes|0|No
+
+With this dialog type, only a single linked message is returned to your script.  The sParam of the link message will contain the button value selected by the user.
+
+### Linked Message Number Returned
+Provides the linked message number to return once the user has made their selection. Do not confuse this number with the Request ID.  They are independent and although in the example provided, it mirrors the "xxyyy" format of the Request ID, this is not a requirement for your scripts.  
+
+### Button 1 Value
+The value provided for this parameter will be returned in the sParam of the linked message when the user makes their selection.
+
+### Button 1 Text
+The text to use for the button.
+
+You can define up to 12 button/value pairs.
+
 
 ## Type 2: Dialog Menu with Multiple Linked Message Calls
-Emotes have the following format:
 \<Request ID\>|\<2\>|\<Link Message Number Returned\>|\<Menu Text\>|<Button 1 Link Msg\>|\<Button 1 Text\>|... (additional buttons)
 
 10003|2|0|Example of a menu that returns a different link message number for each button:|10201|Button One|10202|Button Two
 
+With this dialog type, each button has an individual linked message number that is returned once the user makes their selection.  
+
+### Button 1 Link Msg|Button 1 Text
+These define the linked message number/button text pairs.
+
 ## Type 3: Dialog Menu for Name Selection
-Emotes have the following format:
 \<Request ID\>|\<3\>|\<Link Message Number Returned\>|\<Menu Text\>
 
 10004|3|10401|Example of a name picker menu
 
-## Type 4: Dialog Menu for Name Selection
-Emotes have the following format:
+With this dialog type, you provide a csv list of UUID's when requesting the menu.  Once the user has made their selection, it will return the Linked Message Number and the UUID selected will be in the kParam.
+
+## Type 4: TextBox Menu
 \<Request ID\>|\<4\>|\<Link Message Number Returned\>|\<Menu Text\>
 
 10005|4|10501|Example of a Name Selection Dialog Menu
 
+With this dialog type, a TextBox style menu is provided to the user.  Once the user has entered the text, it will return the Linked Message Number and the user's text will be in the sParam.
+
 ## Type 5: Website Dialog Box
-Emotes have the following format:
 \<Request ID\>|\<5\>|\<Link Message Number Returned\>|\<Menu Text\>|\<URL\>
 
 10012|5|0|Example of a website dialog box|https://github.com/TexEvans90/LSL_MultiLanguage
+
+This dialog type is used to give the user a link to a website.  There is no return value for this type.
+
+### URL
+The URL of the webpage.
+
 
 
 
