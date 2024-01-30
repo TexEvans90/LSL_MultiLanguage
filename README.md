@@ -240,7 +240,7 @@ The Key Parameter is only required when directing the menu to a non-owner avatar
 An Type 1 dialog menu is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "/<Text Parameters/>", \<Key Parameter\>);
-     _No Return Message_
+     *No Return Message*
 
 There are no Additional Parameters for website dialog box requests. The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID.
 
