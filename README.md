@@ -211,7 +211,7 @@ Most of the dialog menu requests can optionally return a CSV string of data. If 
 The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID. 
 
 ## Requesting a Type 2 Dialog Menu (Multiple Linked Message Calls)
-An Type 1 dialog menu is called with the following linked message:
+An Type 2 dialog menu is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "/<Text Parameters/>|\<Return Data\>", \<Key Parameter\>);
      Returns: llMessageLinked(LINK_THIS, \<Button Link Msg\>, "|\<Return Data\>", NULL_KEY);
@@ -219,7 +219,7 @@ An Type 1 dialog menu is called with the following linked message:
 The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID. This menu type also can optionally return additional data.
 
 ## Requesting a Type 3 Dialog Menu (Name Selection)
-An Type 1 dialog menu is called with the following linked message:
+An Type 3 dialog menu is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "/<Text Parameters/>|\<CSV of Button UUIDs\>", \<Key Parameter\>);
      Returns: llMessageLinked(LINK_THIS, \<Return ID\>, "", \<Selected Name's UUID\>);
@@ -229,7 +229,7 @@ For Type 3 dialogs, the CSV of UUIDs parameter is mandatory.
 The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID. This menu type cannot return additional data.
 
 ## Requesting a Type 4 TextBox Menu
-An Type 1 dialog menu is called with the following linked message:
+An Type 4 dialog menu is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "/<Text Parameters/>|\<Return Parameters\>", \<Key Parameter\>);
      Returns: llMessageLinked(LINK_THIS, \<Return ID\>, "\<User Text\>|\<Return Data\>", NULL_KEY);
@@ -237,7 +237,7 @@ An Type 1 dialog menu is called with the following linked message:
 The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID. This menu type also can optionally return additional data.
 
 ## Requesting a Type 5 Website Dialog Box
-An Type 1 dialog menu is called with the following linked message:
+An Type 5 dialog menu is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "/<Text Parameters/>", \<Key Parameter\>);
      No Return Message
@@ -245,7 +245,40 @@ An Type 1 dialog menu is called with the following linked message:
 There are no Additional Parameters for website dialog box requests. The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID.
 
 
-# Language Notecard samples for Special Circumstances
+# Advanced Language Notecard and Code Examples
+
+## Handling Calendar Text Dates
+To provide multilanguage support for textual calendar dates, you should provide month specific language strings. 
+
+Language Notecard:
+```
+- English Language Notecard Example -
+...
+10400|0|3|Today is January %p2%, %p1%.
+10400|0|3|Today is February %p2%, %p1%.
+...
+10411|0|3|Today is December %p2%, %p1%.
+...
+
+- Spanish Language Notecard Example -
+...
+Hoy es %p2% de enero de %p1%.
+Hoy es %p2% de febrero de %p1%.
+...
+Hoy es %p2% de diciembre de %p1%.
+...
+```
+
+Code:
+```
+integer iMonth = 12;
+integer iDay = 25;
+integer iYear = 2024;
+integer iRequestID;
+
+iRequestID = 9010399 + iMonth; // The request ID for January, minus 1
+llMessageLinked(LINK_THIS, iRequestID, (string)iYear +"," + (string)iDay, NULL_KEY);
+```
 add section about text dates
 add section on plurals
 
