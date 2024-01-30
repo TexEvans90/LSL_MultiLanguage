@@ -153,7 +153,7 @@ Whenever your scripts start up, for instance, after your product is worn, your c
      llMessageLinked(LINK_THIS, 90001, "", NULL_KEY);
 
 This tells the LSL_MultiLanguage script to reload the last saved privacy setting and language code. You do not have to call this linked message after changing the language code or the privacy setting via the linked messages.
-
+ 
 In theory, you could change the 90_LC or 90_PS linkset data storage keys directly and use this command to force a reload of the latest values, however, this is **not recommended**, since it bypasses the data validation for these variables. 
 
 ## Changing the Language
