@@ -147,6 +147,15 @@ In the StartProcessingNextEmote_Menu function, there is a set of lists that must
 
 You can define additional blocks to cover different products, so you only have to maintain the one LSL_MultiLanguage script, but before rolling out your product, make sure the correct block is the only one uncommented out.
 
+## Initializing LSL_MultiLanguage
+Whenever your scripts start up, for instance, after your product is worn, your code is responsible for initializing the LSL_MultiLanguage script.  To initialize, send the following linked message:
+
+     llMessageLinked(LINK_THIS, 90001, "", NULL_KEY);
+
+This tells the LSL_MultiLanguage script to reload the last saved privacy setting and language code. You do not have to call this linked message after changing the language code or the privacy setting via the linked messages.
+
+In theory, you could change the 90_LC or 90_PS linkset data storage keys directly and use this command to force a reload of the latest values, however, this is **not recommended**, since it bypasses the data validation for these variables. 
+
 ## Changing the Language
 If your product supports multiple languages, then instead of creating individual product versions, you can keep all your different language notecards in one product and provide a way for your users to swap between languages. Your scripts are responsible for implementing the menus or other methods for the user to change the language. To inform the LSL_MultiLanguage script of changes to the language setting, send the following linked message:
 
@@ -255,17 +264,17 @@ Language Notecard:
 - English Language Notecard Example -
 ...
 10400|0|3|Today is January %p2%, %p1%.
-10400|0|3|Today is February %p2%, %p1%.
+10401|0|3|Today is February %p2%, %p1%.
 ...
 10411|0|3|Today is December %p2%, %p1%.
 ...
 
 - Spanish Language Notecard Example -
 ...
-Hoy es %p2% de enero de %p1%.
-Hoy es %p2% de febrero de %p1%.
+10400|0|3|Hoy es %p2% de enero de %p1%.
+10401|0|3|Hoy es %p2% de febrero de %p1%.
 ...
-Hoy es %p2% de diciembre de %p1%.
+10411|0|3|Hoy es %p2% de diciembre de %p1%.
 ...
 ```
 
@@ -279,8 +288,26 @@ integer iRequestID;
 iRequestID = 9010399 + iMonth; // The request ID for January, minus 1
 llMessageLinked(LINK_THIS, iRequestID, (string)iYear +"," + (string)iDay, NULL_KEY);
 ```
-add section about text dates
-add section on plurals
 
-dont forget to add on the initialization linke message
+## Handling Plural Text
+Generally, languages have different grammar rules for singular and plural forms.  These cases can be handled by providing separate language strings to handle each case.
+
+Language Notecard:
+```
+...
+10501|0|3|There is an avatar nearby.
+10502|0|3|There are %p1% avatars nearby.
+...
+```
+
+Code:
+```
+integer iNumberOfAvatars = 5;
+integer iRequestID;
+
+if(iNumberOfAvatars == 1) iRequestID = 10501; else iRequestID = 10502;
+llMessageLinked(LINK_THIS, iRequestID, (string)iNumberOfAvatars, NULL_KEY);
+```
+
+
 
