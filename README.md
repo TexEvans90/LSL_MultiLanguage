@@ -139,7 +139,6 @@ The 90001 to 90003 Request IDs must be included in your Language notecards. Thes
 # Setting up the LSL_Language Script
 Once you have the Language notecards set up, you will need to update several items in the LSL_MultiLanguage script. In the Rollout Instructions section near the top of the script, you can change the following options.
 
-* Debug Mode: While testing your product, turn on the debug mode with a value of 1 (or 2). This will give warnings if the script is having to search through too many rows to find the correct emote/menu requested. If your Language notecard is set up correctly, it should always find the correct on on the first llGetNotecardLine data server request. Warning indicate that there is an issue with your Language notecard or the list of section indexes (discussed below).
 * Valid Languages: This should be updated to include all the two letter language codes that are valid for your collection of Lanugage notecards.
 * Menu Timeout: You can adjust the amount of time before the menus time out and are cleared from the script's queues. LSL_MultiLanguage can handle more than one menu outstanding at a time.
 
