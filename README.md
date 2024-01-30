@@ -136,6 +136,14 @@ There are several areas in the script where you can definine your own custom typ
 ## Addition Information about the Language Notecard
 The 90001 to 90003 Request IDs must be included in your Language notecards. These emotes are used by the LSL_MultiLanguage script to handle error conditions. LSL_MultiLangauge uses the 90 grouping identifier.
 
+**IMPORTANT The Language Card language strings should not have empty rows between them.  If you do add a row; for comments for instance; you should skip the Request ID number that would have been used for that row. See the example below.**
+
+```
+10001|0|3|An Emote
+* The next row is an example of a dialog menu. Notice Request ID 10002 is skipped
+10003|1|10202|A Dialog Menu|1|Yes|0|No
+```
+
 # Setting up the LSL_Language Script
 Once you have the Language notecards set up, you will need to update several items in the LSL_MultiLanguage script. In the Rollout Instructions section near the top of the script, you can change the following options.
 
