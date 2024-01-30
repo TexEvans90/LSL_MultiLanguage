@@ -36,7 +36,7 @@ The Emote/Menu Parameter definitition changes depending upon the type. This will
 The Emote/Menu Text and Additional Parameters varys depending upon the type, however the first part of this section is the text for the emote or menu text. The additional parameters will be discussed in each Emote/Menu Type's section.
 
 ## Type 0: Emotes
-\<Request ID\>|\<0\>|\<Emote Volume\>|\<Emote Text\>
+\<Request ID\>|0|\<Emote Volume\>|\<Emote Text\>
 
 10001|0|3|This is an example of an emote
 
