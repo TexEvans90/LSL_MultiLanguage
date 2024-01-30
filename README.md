@@ -195,7 +195,7 @@ The Key Parameter is used to direct an emote/menu to a specific avatar as needed
 An emote is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "/<Text Parameters/>", \<Key Parameter\>);
-     _No Return Message_
+     _No_ _Return_ _Message_
 
 There are no Additional Parameters for emote requests. The Key Parameter is only required when directing a llInstantMessage to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID.
 
