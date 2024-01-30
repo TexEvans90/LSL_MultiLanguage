@@ -195,7 +195,7 @@ The Key Parameter is used to direct an emote/menu to a specific avatar as needed
 An emote is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "/<Text Parameters/>", \<Key Parameter\>);
-     _No_ _Return_ _Message_
+     No Return Message
 
 There are no Additional Parameters for emote requests. The Key Parameter is only required when directing a llInstantMessage to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID.
 
@@ -221,7 +221,7 @@ The Key Parameter is only required when directing the menu to a non-owner avatar
 ## Requesting a Type 3 Dialog Menu (Name Selection)
 An Type 1 dialog menu is called with the following linked message:
 
-     llMessageLinked(LINK_THIS, 90xxyyy, "/<Text Parameters/>|\<CSV of UUIDs for the Buttons\>", \<Key Parameter\>);
+     llMessageLinked(LINK_THIS, 90xxyyy, "/<Text Parameters/>|\<CSV of Button UUIDs\>", \<Key Parameter\>);
      Returns: llMessageLinked(LINK_THIS, \<Return ID\>, "", \<Selected Name's UUID\>);
      
 For Type 3 dialogs, the CSV of UUIDs parameter is mandatory. 
@@ -240,7 +240,7 @@ The Key Parameter is only required when directing the menu to a non-owner avatar
 An Type 1 dialog menu is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "/<Text Parameters/>", \<Key Parameter\>);
-     *No Return Message*
+     No Return Message
 
 There are no Additional Parameters for website dialog box requests. The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID.
 
