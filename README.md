@@ -136,7 +136,7 @@ There are several areas in the script where you can definine your own custom typ
 ## Addition Information about the Language Notecard
 The 90001 to 90003 Request IDs must be included in your Language notecards. These emotes are used by the LSL_MultiLanguage script to handle error conditions. LSL_MultiLangauge uses the 90 grouping identifier.
 
-**IMPORTANT The Language Card language strings should not have empty rows between them.  If you do add a row; for comments for instance; you should skip the Request ID number that would have been used for that row. See the example below.**
+**IMPORTANT: The Language Card language strings should not have empty rows between them.  If you do add a row; for comments for instance; you should skip the Request ID number that would have been used for that row. See the example below.**
 
 ```
 10001|0|3|An Emote
@@ -179,7 +179,7 @@ Your product can support a privacy setting to allow the user to choose to keep e
 |                1 | Private - Emotes play using llOwnerSay           |
 |                2 | Mute    - Emotes are muted                       |
 
-Your scripts are responsible for implementing the menus or other methods for hte user to change the privacy setting. To inform the LSL_MultiLanguage script of changes to the privacy setting, send the following linked message:
+Your scripts are responsible for implementing the menus or other methods for the user to change the privacy setting. To inform the LSL_MultiLanguage script of changes to the privacy setting, send the following linked message:
 
      llMessageLinked(LINK_THIS, 90015, "/<privacy setting/>", NULL_KEY);
 
@@ -312,9 +312,20 @@ Code:
 integer iNumberOfAvatars = 5;
 integer iRequestID;
 
-if(iNumberOfAvatars == 1) iRequestID = 10501; else iRequestID = 10502;
+if(iNumberOfAvatars == 1) iRequestID = 9010501; else iRequestID = 9010502;
 llMessageLinked(LINK_THIS, iRequestID, (string)iNumberOfAvatars, NULL_KEY);
 ```
 
+## Documenting Your Code
+I recommend that you include the language string for your primary language as a comment above your linked message call to the LSL_MultiLanguage script.  At least from my experience, having the language string comment nearby your requests, helps remind you of the purpose of the emote or menu, and helps to document what parameters are needed to be passed to the request, which helps when you are debugging and reviewing your code.  And it also provides a reminder of what return values you need to provide code to handle.
 
+```
+key kClosestAvatar;
+
+// Emote: 10001|0|3|The closest avatar is %n1%.
+llMessageLinked(LINK_THIS, 9010001, (string)kClosestAvatar, NULL_KEY);
+
+// Menu: 10002|1|10202|%on% wants to be friends with you.  Do you want to be friends with them?|1|Yes|0|No
+llMessageLinked(LINK_THIS, 9010002, "", kClosestAvatar);
+```
 
