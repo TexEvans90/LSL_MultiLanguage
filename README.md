@@ -153,6 +153,10 @@ Once you have the Language notecards set up, you will need to update several ite
 
 In the StartProcessingNextEmote_Menu function, there is a set of lists that must be updated to correspond to your Language notecards. The lEmoteNumbers list is a list of your grouping identifers used in the Request IDs. They should be formatted in a xx000 format. The lNotecardLineNumbers list is a list of the first notecard line for each grouping identifier. The line numbers for the notecard starts at 1. If you are using an IDE similar to MS Code, you'll see the correct line number in the IDE line numbers. The line number should always be for the xx001 Request ID. The final 9999999 and 1 elements to these lists are mandatory and should not be changed. In addition the 90000 element is required and the line number should be updated to the 90001 Request ID.
 
+```
+list lEmoteNumbers        = [10000, 90000, 9999999]; 
+list lNoteCardLineNumbers = [    1,    13,       1];   
+```
 You can define additional blocks to cover different products, so you only have to maintain the one LSL_MultiLanguage script, but before rolling out your product, make sure the correct block is the only one uncommented out.
 
 ## Initializing LSL_MultiLanguage
