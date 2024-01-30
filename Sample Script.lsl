@@ -71,7 +71,7 @@ default
             // the appropriate version in your code.  
             
             // 10006|0|1|Example of an emote with one item
-            // 10007|0|1|Example of an emote with %p1% item
+            // 10007|0|1|Example of an emote with %p1% items
             integer iValue = g_iExampleNumber - 10005;
             
             if(iValue == 1) llMessageLinked(LINK_THIS, 9010006, "", NULL_KEY);
@@ -112,7 +112,7 @@ default
         if(g_iExampleNumber == 10011)
         {   
             // Type 4 Menu
-            // 10010|4|10301|Example of a texbox menu that also includes a parameter.  You can add parameters to all of your menus, like %on%.
+            // 10011|4|10401|Example of a texbox menu that also includes a parameter.  You can add parameters to all of your menus, like %on%.
             llMessageLinked(LINK_THIS, 9010011, "", NULL_KEY);
         }
         
