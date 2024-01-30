@@ -115,7 +115,7 @@ With this dialog type, you provide a csv list of UUID's when requesting the menu
 ## Type 4: TextBox Menu
 \<Request ID\>|\<4\>|\<Link Message Number Returned\>|\<Menu Text\>
 
-10005|4|10501|Example of a Name Selection Dialog Menu
+10005|4|10501|Example of a textbox menu
 
 With this dialog type, a TextBox style menu is provided to the user.  Once the user has entered the text, it will return the Linked Message Number and the user's text will be in the sParam.
 
@@ -134,8 +134,48 @@ The URL of the webpage.
 ## Types 10 +
 There are several areas in the script where you can definine your own custom types. If you have a use case for a custom type that you think may be useful for other creators, send me a message and I will consider adding it as an official type.
 
+## Addition Information about the Language Notecard
+The 90001 to 90003 Request IDs must be included in your Language notecards.  These emotes are used by the LSL_MultiLanguage script to handle error conditions. LSL_MultiLangauge uses the 90 grouping identifier.
+
+# Setting up the LSL_Language Script
+Once you have the Language notecards set up, you will need to update several items in the LSL_MultiLanguage script. In the Rollout Instructions section near the top of the script, you can change the following options.
+
+* Debug Mode: While testing your product, turn on the debug mode with a value of 1 (or 2).  This will give warnings if the script is having to search through too many rows to find the correct emote/menu requested.  If your Language notecard is set up correctly, it should always find the correct on on the first llGetNotecardLine data server request. Warning indicate that there is an issue with your Language notecard or the list of section indexes (discussed below).
+* Valid Languages: This should be updated to include all the two letter language codes that are valid for your collection of Lanugage notecards.
+* Menu Timeout: You can adjust the amount of time before the menus time out and are cleared from the script's queues.  LSL_MultiLanguage can handle more than one menu outstanding at a time.
+
+In the StartProcessingNextEmote_Menu function, there is a set of lists that must be updated to correspond to your Language notecards. The lEmoteNumbers list is a list of your grouping identifers used in the Request IDs.  They should be formatted in a xx000 format.  The lNotecardLineNumbers list is a list of the first notecard line for each grouping identifier.  The line numbers for the notecard starts at 1. If you are using an IDE similar to MS Code, you'll see the correct line number in the IDE line numbers.  The line number should always be for the xx001 Request ID.  The final 9999999 and 1 elements to these lists are mandatory and should not be changed. In addition the 90000 element is required and the line number should be updated to the 90001 Request ID.
+
+You can define additional blocks to cover different products, so you only have to maintain the one LSL_MultiLanguage script, but before rolling out your product, make sure the correct block is the only one uncommented out.
+
+## Changing the Language
+If your product supports multiple languages, then instead of creating individual product versions, you can keep all your different language notecards in one product and provide a way for your users to swap between languages.  Your scripts are responsible for implementing the menus or other methods for the user to change the language. To inform the LSL_MultiLanguage script of changes to the language setting, send the following linked message.
+
+     llMessageLinked(LINK_THIS, 90010, "\<two letter language code\>", NULL_KEY);
+
+LSL_MultiLanguage stores this setting in the 90_LC key in the linkset data storage.  Your scripts can read the latest setting at any time.
+     
+## Change the Privacy Setting
+Your product can support a privacy setting to allow the user to choose to keep emotes private or to turn off emotes. The three levels are:
+
+| Privacy Setting  | Description     |
+| ---------------: | --------------- |
+|                0 | Public          |
+|                1 | Private         |
+|                2 | Mute            |
+
+Your scripts are responsible for implementing the menus or other methods for hte user to change the privacy setting.  To inform the LSL_MultiLanguage script of changes to the privacy setting, send the following linked message.
+
+     llMessageLinked(LINK_THIS, 90015, "\<privacy setting\>", NULL_KEY);
+
+LSL_MultiLanguage stores this setting in the 90_PS key in the linkset data storage.  Your scripts can read the latest setting at any time.
+     
 # Requesting Emotes and Menus
 
 
+# Language Notecard samples for Special Circumstances
+add section about text dates
+add section on plurals
 
+dont forget to add on the initialization linke message
 
