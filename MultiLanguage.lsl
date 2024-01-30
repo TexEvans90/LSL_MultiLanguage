@@ -994,7 +994,8 @@ default
         // For TextBox type menus, the message is the return value
         if(iMenuType == 4)
         {
-            //TODO IMPORTANT, because of the additional return data, need to strip out any pipe characters
+            // Filter out any user submitted | characters from the return value.  The sReturnValue uses the pipe character to delimit the return value from additional return data.
+            message = strReplace(message, "|" , "/");
             sReturnValue = message;
         }
 
@@ -1011,7 +1012,6 @@ default
         */
 
         // Add back the return params and send the return link message 
-        
         if(sMenuExtraParams) sReturnValue += "|" + sMenuExtraParams;
         
         llMessageLinked(LINK_THIS, iMenuReturnID, sReturnValue, kReturnKey);
@@ -1038,9 +1038,7 @@ default
             if(iCurrentTime > llList2Integer(g_lMenuTime, iIndex) + MENU_TIMEOUT)
             {
                 // Pull the menu's info
-                integer iMenuHandle      = llList2Integer(g_lMenuHandle,      iIndex);
-                integer iMenuType        = llList2Integer(g_lMenuType,        iIndex);
-                string  sMenuExtraParams = llList2String( g_lMenuReturnParms, iIndex);
+                integer iMenuHandle      = llList2Integer(g_lMenuHandle, iIndex);
 
                 // Clean Up Queue and Listener
                 llListenRemove(iMenuHandle);
