@@ -541,20 +541,6 @@ default
     {
         g_kOwnerKey = llGetOwner(); 
 
-        //llScriptProfiler(PROFILE_SCRIPT_MEMORY);
-
-        // Note: This script will not respond to the 1200 ReloadData command
-
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        // Handle Initialization and Update Messages
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        
-        
-
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        // Begin Processing Other Link Messages
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         if(!((num >= 90000 && num <= 90999) || (num >= 9000000 && num <= 9099999))) return;
 
         if(num == 90001) // 90001 MLS_Initialize
@@ -574,9 +560,9 @@ default
 
             if(iNewPrivacySetting < 0 || iNewPrivacySetting > 2) iNewPrivacySetting = 0;
 
-			g_iPrivacySetting = iNewPrivacySetting; 
+            g_iPrivacySetting = iNewPrivacySetting; 
 
-			llLinksetDataWrite("90_PS", (string)g_iPrivacySetting); 
+            llLinksetDataWrite("90_PS", (string)g_iPrivacySetting); 
             return;
         }
 
@@ -648,8 +634,6 @@ default
             string sMenuExtraParams;
             list lRequestData;
             key kSendTo;
-            //list lEmoteParameters;
-            //string sMaleKey;
             
             integer iRequestID;
             integer iRequestIDPulled;
@@ -924,8 +908,6 @@ default
 
                     g_kNotecardQuery = llGetNotecardLine(g_sEmoteNotecard, g_iLine); 
                 }
-
-                //Debug("Emote memory used: " + (string)llGetSPMaxMemory() + " bytes");
                 
             }
             
