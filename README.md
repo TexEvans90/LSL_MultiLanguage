@@ -70,7 +70,7 @@ The emote text is the text that will play when the emote is called. The text can
 | %n1%   | Display Name for UUID provided (%n2% and %n3% is also available to use)         |
 | %fn1%  | Display First Name for UUID provided (%fn2% and %fn3% is also available to use) |
 
-The first name string substitution parameters select the first word in the user's display name. The script will attempt to get the display name to extract the first name, but this is not guaranteed to happen, since it is subject to the limitations of the llGetDisplayName function. If the script is unable to get the display name, it will revert to showing the full display name. The full display name uses the "secondlife:///app/agent/UUID/displayname" method, so this is guaranteed to work.
+The first name string substitution parameters select the first word in the user's display name. The script will attempt to get the display name to extract the first name, but this is not guaranteed to happen, since it is subject to the limitations of the llGetDisplayName function. If the script is unable to get the display name, it will revert to showing the full display name. The full display name uses the "secondlife:///app/agent/UUID/displayname" method, so this is guaranteed to work, if a valid UUID is provided.
 
 The parameter string substituion is a direct replacement with data that you provide when requesting the emote. It is intended for numerical subsitutions or other non-language specific substitions only.
 
