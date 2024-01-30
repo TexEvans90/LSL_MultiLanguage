@@ -128,7 +128,7 @@ This dialog type is used to give the user a link to a website. There is no retur
 ### URL
 The URL of the webpage.
 
-## Type 6 to 9: Reserved For Future Use
+## Types 6 to 9: Reserved For Future Use
 
 ## Types 10 +
 There are several areas in the script where you can definine your own custom types. If you have a use case for a custom type that you think may be useful for other creators, send me a message and I will consider adding it as an official type.
@@ -142,6 +142,7 @@ The 90001 to 90003 Request IDs must be included in your Language notecards. Thes
 10001|0|3|An Emote
 * The next row is an example of a dialog menu. Notice Request ID 10002 is skipped
 10003|1|10202|A Dialog Menu|1|Yes|0|No
+20001|1|20503|A Dialog Menu for a different grouping ID.|1|Yes|0|No
 ```
 
 # Setting up the LSL_Language Script
