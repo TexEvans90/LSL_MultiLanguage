@@ -68,8 +68,6 @@
 //  The message is the emote or menu text. The script can do text substituions based upon parameters passed in the calling link message sParam. For a list of substituions, see the
 //  StringSubstitutions function.  
 //
-//  //     Called by llMessageLinked(LINK_THIS, 90xxyyy, <optional sParams>, <send to UUID>)
-//
 //  Type 0 - Emote
 //  ---------------------------------------------------------------------------
 //  Emote requests play an emote.  The sParam in the calling link message is a CSV of string substitution parameters.
@@ -165,6 +163,7 @@
 //    Key          Standard Variable Name          Notes                                                                                                                    Default
 //    -----------  ------------------------------  -----------------------------------------------------------------------------------------------------------------------  -------
 //    90_LC        sLanguageCode                                                                                                                                            EN
+//    90_PS        iPrivacySetting                                                                                                                                          0
 //
 //  
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -177,7 +176,6 @@
 //  90015     MLS_SetPrivacy        sParam = Privacy Code
 //  90xxyyy   MLS_TriggerEmote
 //  90xxyyy   MLS_TriggerMenu
-//
 //
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //  Additional Info
@@ -195,15 +193,13 @@
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //  Future Versions:
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// 
+// - Add ability to set a custom time out period for individual dialog menus
+//
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //  To Do List:
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//  - Add support for emote silencing
-//  - Add debug code to warn if excessive number of notecard lines need to be read to get to the correct version of the emote.  
-//  - Add ability to set a custom time out period for individual dialog menus
-//  - for textboxes, probably need to do some text cleanup on it to strip | characters since that is used to delimit the sParam between user response and any optional data returned
 //  - for name related string substitution tokens, add test for key and handle between SLURL or just substitute passed name string
+//
 // ********************************************************************************************************************************************************************************
 
 // ********************************************************************************************************************************************************************************
@@ -211,7 +207,6 @@
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 // 1. Set constants
-integer DEBUG_MODE = 0;  //0 = off, other values indicates the number of rows to process before being considered excessive when searching the emote notecard
 list    VALID_LANGUAGES = ["EN"];
 integer MENU_TIMEOUT = 60;  
 
@@ -222,7 +217,7 @@ integer MENU_TIMEOUT = 60;
 /*
 Debug(string sMsg)
 {
-    llOwnerSay("Debug (LSS): " + sMsg);
+    llOwnerSay("Debug (MLS): " + sMsg);
 }
 //*/
 
@@ -284,7 +279,7 @@ StartProcessingNextEmote_Menu()
     // For Your Product #1
     //*
     list lEmoteNumbers        = [10000, 90000, 9999999]; 
-    list lNoteCardLineNumbers = [    1,    13,       2];   
+    list lNoteCardLineNumbers = [    1,    13,       1];   
     //*/
     
     // For Your Product #2
@@ -462,7 +457,7 @@ string StringSubstitutions(string sStringToConvert)
 
     sFirstName = ConvertReceivedKeyOrNameToFirstName(g_kOwnerKey);
 
-    sStringToConvert = strReplace(sStringToConvert, "%ok%", (string)g_kOwnerKey);  //TODO is there any need for this. ?
+    sStringToConvert = strReplace(sStringToConvert, "%ok%", (string)g_kOwnerKey);  
     sStringToConvert = strReplace(sStringToConvert, "%on%", "secondlife:///app/agent/"+(string)g_kOwnerKey+"/displayname");
     sStringToConvert = strReplace(sStringToConvert, "%ofn%", sFirstName);
 
@@ -666,8 +661,7 @@ default
             // this is a line of our notecard
             if (data == EOF) 
             {   
-                //TODO llGetCreator( );
-                llOwnerSay("ERROR: Language EOF "+ (string)iRequestID +"- Contact the object's creator to report the error.");
+                llOwnerSay("ERROR: Language EOF "+ (string)iRequestID +"- Contact secondlife:///app/agent/" + (string)llGetCreator() + "/displayname to report the error.");
                 RemoveRequestFromMainQueueAndProcessNextOne();
             } 
             else 
@@ -845,12 +839,12 @@ default
                             return;
                         }
 
-                        // Reserved for Future Use (Request Type 6)
+                        // Reserved for Future Use (Request Type 6 to 9)
 
                         // In the section below, you can define handling for custom request types that are specific to your application
                         // --------------------------------------------------------------------------------------------------------------------------------------------------------
                         /*
-                        if(iRequestType == 7) // Request types 7 and higher are available for you to use for customizations
+                        if(iRequestType == 10) // Request types 10 and higher are available for you to use for customizations
                         {
                            
                         } 
@@ -924,7 +918,7 @@ default
 
                     if(g_iLine < 0) 
                     {
-                        llOwnerSay("ERROR: Language BOF"+ (string)iRequestID +" - Contact product creator to report error.");
+                        llOwnerSay("ERROR: Language BOF"+ (string)iRequestID +" - Contact secondlife:///app/agent/" + (string)llGetCreator() + "/displayname to report the error.");
                         RemoveRequestFromMainQueueAndProcessNextOne();
                     }
 
@@ -1000,13 +994,18 @@ default
         // For TextBox type menus, the message is the return value
         if(iMenuType == 4)
         {
+            //TODO IMPORTANT, because of the additional return data, need to strip out any pipe characters
             sReturnValue = message;
         }
+
+        // For URL type menus (Type 5), there is no return value
+        
+        // Menu Types 6 to 9 are Reserved for Future Use
 
         // In the section below, you can define handling for custom request types that are specific to your application
         // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         /*
-        if(iMenuType == 7)  // Request types 7 to TODO are available for you to use for customizations
+        if(iMenuType == 10)  // Request types 10 and higher are available for you to use for customizations
         {
         }
         */
@@ -1023,9 +1022,6 @@ default
     // ****************************************************************************************************************************************************************************
     timer() 
     {
-        //Debug Code - list queue
-        //if(DEBUG_MODE) llOwnerSay(llList2CSV(g_lMainQueue));
-
         integer iCurrentTime = llGetUnixTime();
         float   fNextTimer;
         integer iIndex;
