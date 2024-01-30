@@ -11,7 +11,11 @@ There are varying formats for the text string depending on emote and menu type. 
 \<Request ID\>|\<Emote/Menu Type\>|\<Emote/Menu Parameter\>|\<Emote/Menu Text and Additional Parameters\>
 
 ### Request ID
-The Request ID is in a xxyyy number format, where the first two digits are a grouping identifer and the last three are a emote/messsage ID. The gouping identifier can be used to identify the calling script, which is useful in a multi-script product. Each script can have their own group ID, so that changes to one script's emotes and menus won't require renumbering other script's emotes and menus. And all of a specific scripts emotes/menus can be grouped in one section of the notecard, instead of being scattered throughout the language notecard. The group ID has to be in the 10 to 99 range, but 90 is reserved for the LSL_MultiLanguage script.
+The Request ID is in a xxyyy number format, where the first two digits are a grouping identifer and the last three are a emote/messsage ID. The grouping identifier can be used to identify the calling script, which is useful in a multi-script product. 
+
+Each script can have their own group ID, so that changes to one script's emotes and menus won't require renumbering other script's emotes and menus. And all of a specific scripts emotes/menus can be grouped in one section of the notecard, instead of being scattered throughout the language notecard. 
+
+The group ID has to be in the 10 to 99 range, but 90 is reserved for the LSL_MultiLanguage script.
 
 The last three digits are a unique (within the group) identifier for the specific emote or menu. The first indentifier in the group must be 001. 
 
