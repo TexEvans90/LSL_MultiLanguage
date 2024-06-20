@@ -197,7 +197,7 @@ LSL_MultiLanguage stores this setting in the 90_PS key in the linkset data stora
 # Requesting Emotes and Menus
 To request an emote or menu, use the following linked message:
 
-     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Additional Parameters>", \<Key Parameter\>);
+     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Additional Parameters>", <Key Parameter>);
 
 The message number is the Request ID, prepended with a "90".
 
@@ -219,7 +219,7 @@ The Key Parameter is used to direct an emote/menu to a specific avatar as needed
 ## Requesting a Type 0 Emote
 An emote is called with the following linked message:
 
-     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>", \<Key Parameter\>);
+     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>", <Key Parameter>);
      No Return Message
 
 There are no Additional Parameters for emote requests. The Key Parameter is only required when directing a llInstantMessage to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID.
@@ -227,7 +227,7 @@ There are no Additional Parameters for emote requests. The Key Parameter is only
 ## Requesting a Type 1 Dialog Menu (Single Linked Message Call)
 An Type 1 dialog menu is called with the following linked message:
 
-     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Return Data>", \<Key Parameter\>);
+     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Return Data>", <Key Parameter>);
      Returns: llMessageLinked(LINK_THIS, \<Return ID\>, "<Button ID>|<Return Data>", NULL_KEY);
      
 ### Return Data parameter
@@ -238,7 +238,7 @@ The Key Parameter is only required when directing the menu to a non-owner avatar
 ## Requesting a Type 2 Dialog Menu (Multiple Linked Message Calls)
 An Type 2 dialog menu is called with the following linked message:
 
-     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Return Data>", \<Key Parameter\>);
+     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Return Data>", <Key Parameter>);
      Returns: llMessageLinked(LINK_THIS, \<Button Link Msg\>, "|<Return Data>", NULL_KEY);
 
 The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID. This menu type also can optionally return additional data.
@@ -246,7 +246,7 @@ The Key Parameter is only required when directing the menu to a non-owner avatar
 ## Requesting a Type 3 Dialog Menu (Name Selection)
 An Type 3 dialog menu is called with the following linked message:
 
-     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<CSV of Button UUIDs>", \<Key Parameter\>);
+     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<CSV of Button UUIDs>", <Key Parameter>);
      Returns: llMessageLinked(LINK_THIS, \<Return ID\>, "", \<Selected Name's UUID\>);
      
 For Type 3 dialogs, the CSV of UUIDs parameter is mandatory. 
@@ -256,7 +256,7 @@ The Key Parameter is only required when directing the menu to a non-owner avatar
 ## Requesting a Type 4 TextBox Menu
 An Type 4 dialog menu is called with the following linked message:
 
-     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Return Parameters>", \<Key Parameter\>);
+     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Return Parameters>", <Key Parameter>);
      Returns: llMessageLinked(LINK_THIS, \<Return ID\>, "\User Text>|<Return Data>", NULL_KEY);
 
 The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID. This menu type also can optionally return additional data.
@@ -264,7 +264,7 @@ The Key Parameter is only required when directing the menu to a non-owner avatar
 ## Requesting a Type 5 Website Dialog Box
 An Type 5 dialog menu is called with the following linked message:
 
-     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>", \<Key Parameter\>);
+     llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>", <Key Parameter>);
      No Return Message
 
 There are no Additional Parameters for website dialog box requests. The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID.
