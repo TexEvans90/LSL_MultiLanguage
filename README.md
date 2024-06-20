@@ -228,7 +228,7 @@ There are no Additional Parameters for emote requests. The Key Parameter is only
 An Type 1 dialog menu is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Return Data>", <Key Parameter>);
-     Returns: llMessageLinked(LINK_THIS, \<Return ID\>, "<Button ID>|<Return Data>", NULL_KEY);
+     Returns: llMessageLinked(LINK_THIS, <Return ID>, "<Button ID>|<Return Data>", NULL_KEY);
      
 ### Return Data parameter
 Most of the dialog menu requests can optionally return a CSV string of data. If provided when the menu is requested, the sParam of the linked message returned when the user makes their selection will have this data appended, 
@@ -239,7 +239,7 @@ The Key Parameter is only required when directing the menu to a non-owner avatar
 An Type 2 dialog menu is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Return Data>", <Key Parameter>);
-     Returns: llMessageLinked(LINK_THIS, \<Button Link Msg\>, "|<Return Data>", NULL_KEY);
+     Returns: llMessageLinked(LINK_THIS, <Button Link Msg>, "|<Return Data>", NULL_KEY);
 
 The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID. This menu type also can optionally return additional data.
 
@@ -247,7 +247,7 @@ The Key Parameter is only required when directing the menu to a non-owner avatar
 An Type 3 dialog menu is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<CSV of Button UUIDs>", <Key Parameter>);
-     Returns: llMessageLinked(LINK_THIS, \<Return ID\>, "", \<Selected Name's UUID\>);
+     Returns: llMessageLinked(LINK_THIS, <Return ID>, "", <Selected Name's UUID>);
      
 For Type 3 dialogs, the CSV of UUIDs parameter is mandatory. 
 
@@ -257,7 +257,7 @@ The Key Parameter is only required when directing the menu to a non-owner avatar
 An Type 4 dialog menu is called with the following linked message:
 
      llMessageLinked(LINK_THIS, 90xxyyy, "<Text Parameters>|<Return Parameters>", <Key Parameter>);
-     Returns: llMessageLinked(LINK_THIS, \<Return ID\>, "\User Text>|<Return Data>", NULL_KEY);
+     Returns: llMessageLinked(LINK_THIS, <Return ID>, "<User Text>|<Return Data>", NULL_KEY);
 
 The Key Parameter is only required when directing the menu to a non-owner avatar. Otherwise, it is recommended you use NULL_KEY instead of passing the owner's UUID. This menu type also can optionally return additional data.
 
