@@ -175,7 +175,7 @@ In theory, you could change the 90_LC or 90_PS linkset data storage keys directl
 ## Changing the Language
 If your product supports multiple languages, then instead of creating individual product versions, you can keep all your different language notecards in one product and provide a way for your users to swap between languages. Your scripts are responsible for implementing the menus or other methods for the user to change the language. To inform the LSL_MultiLanguage script of changes to the language setting, send the following linked message:
 
-     llMessageLinked(LINK_THIS, 90010, "\<two letter language code\>", NULL_KEY);
+     llMessageLinked(LINK_THIS, 90010, \"\<two letter language code\>", NULL_KEY);
 
 LSL_MultiLanguage stores this setting in the 90_LC key in the linkset data storage. Your scripts can read the latest setting at any time.
      
